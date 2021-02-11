@@ -19,11 +19,14 @@
             <td>{{this.description}}</td>
         </tr>
         {{/each}}
-        {{<td>There are no tasks to display.</td>}}
+        {{else}}
+        <tr>
+            <td>There are no tasks to display.</td>
+        </tr>
         {{/if}}
     </tbody>
 </table>
 
 <template id="task-template">
-    <td></td>
+    <td>\{{this.description}}</td>
 </template>

@@ -8,7 +8,7 @@ if (taskTemplate) {
     const template = window.Handlebars.compile(taskTemplate.innerHTML)
 
     // Create a socket connection using Socket.io
-    const socket = window.importScripts()
+    const socket = window.io()
 
     // Listen for message "new task" from the server
     socket.on('task', arg => {
