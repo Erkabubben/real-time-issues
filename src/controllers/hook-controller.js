@@ -12,7 +12,7 @@ import mongoose from 'mongoose'
 /**
  * Encapsulates a controller.
  */
-export class IssuesController {
+export class HookController {
   /**
    * Displays the index page.
    *

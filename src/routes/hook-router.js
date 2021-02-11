@@ -8,15 +8,15 @@
 
 import express from 'express'
 import { HookController } from '../controllers/hook-controller.js'
-import { IssuesController } from '../controllers/issues-controller.js'
+import { TasksController } from '../controllers/tasks-controller.js'
 
 export const router = express.Router()
 
 const controller = new HookController()
-const issuesController = new IssuesController()
+const tasksController = new TasksController()
 
 // Map HTTP verbs and route paths to controller actions.
-router.post('/issue', controller.index, issuesController.create)
+router.post('/task', controller.index, tasksController.create)
 
 //router.get('/', controller.index)
 

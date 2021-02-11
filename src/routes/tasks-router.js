@@ -7,11 +7,11 @@
  */
 
 import express from 'express'
-import { IssuesController } from '../controllers/issues-controller.js'
+import { TasksController } from '../controllers/tasks-controller.js'
 
 export const router = express.Router()
 
-const controller = new IssuesController()
+const controller = new TasksController()
 
 // Map HTTP verbs and route paths to controller actions.
 router.get('/', controller.index)

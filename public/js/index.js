@@ -15,5 +15,8 @@ if (taskTemplate) {
         const taskString = template(arg)
         const tr = document.createElement('tr')
         tr.innerHTML = taskString
+
+        const taskList = document.querySelector('#task-list')
+        taskList.appendChild(tr)
     })
 }

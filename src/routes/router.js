@@ -8,13 +8,13 @@
 
 import express from 'express'
 import createError from 'http-errors'
-import { router as issuesRouter } from './issues-router.js'
+import { router as tasksRouter } from './tasks-router.js'
 import { router as hookRouter } from './hook-router.js'
 //import { router as usersRouter } from './users-router.js'
 
 export const router = express.Router()
 
-router.use('/', issuesRouter)
+router.use('/', tasksRouter)
 //router.use('/users', usersRouter) // Registers the Users collection router.
 
 // Webhook: Create a route for the hook
