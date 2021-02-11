@@ -41,9 +41,9 @@ const main = async () => {
   app.use(helmet())
   app.use(
     helmet.contentSecurityPolicy({
-      directives: {
+      directives: { // unsafe-eval added to allow Handlebars to work on client
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net']
+        'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net', "'unsafe-eval'"]
       }
     })
   )

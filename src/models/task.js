@@ -9,29 +9,9 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
-// Create a schema for the Snippet subdocuments.
-const snippetSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: '`{PATH}` is required!',
-    trim: true,
-    maxLength: [100, '`{PATH}` ({VALUE}) exceeds the limit of ({MAXLENGTH}) characters.'],
-    minLength: [4, '`{PATH}` ({VALUE}) is beneath the limit ({MINLENGTH}) characters.']
-  },
-  code: {
-    type: String,
-    required: '`{PATH}` is required!',
-    maxLength: [1000000, '`{PATH}` ({VALUE}) exceeds the limit of ({MAXLENGTH}) characters.'],
-    minLength: [3, '`{PATH}` ({VALUE}) is beneath the limit ({MINLENGTH}) characters.']
-  }
-}, {
-  timestamps: true,
-  versionKey: false
-})
-
 // Create a User schema.
-const userSchema = new mongoose.Schema({
-  username: {
+const taskSchema = new mongoose.Schema({
+  description: {
     type: String,
     required: '`{PATH}` is required!',
     unique: true,
@@ -39,12 +19,8 @@ const userSchema = new mongoose.Schema({
     maxlength: [100, '`{PATH}` ({VALUE}) exceeds the limit of ({MAXLENGTH}) characters.'],
     minlength: [4, '`{PATH}` ({VALUE}) is beneath the limit ({MINLENGTH}) characters.']
   },
-  password: {
-    type: String,
-    required: '`{PATH}` is required!'
-  },
-  snippets: { // The User's collection of Snippets.
-    type: [snippetSchema]
+  done: {
+    type: Boolean
   }
 }, {
   timestamps: true,
@@ -58,7 +34,7 @@ const userSchema = new mongoose.Schema({
  * @param {string} password - The unhashed password.
  * @returns {string} - The bcrypt-hashed and salted password.
  */
-userSchema.statics.hashPassword = async function (password) {
+taskSchema.statics.hashPassword = async function (password) {
   const hashedPassword = await bcrypt.hash(password, 8)
   // Throw error if entered password is not within max and min length
   if (password.length > 200) {
@@ -76,7 +52,7 @@ userSchema.statics.hashPassword = async function (password) {
  * @param {string} password - The entered password.
  * @returns {object} - The authenticated user's Mongoose model.
  */
-userSchema.statics.authenticate = async function (username, password) {
+taskSchema.statics.authenticate = async function (username, password) {
   const user = await this.findOne({ username })
 
   // If no user is found or password is wrong, throw an error.
@@ -89,4 +65,4 @@ userSchema.statics.authenticate = async function (username, password) {
 }
 
 // Create a model using the schema.
-export const User = mongoose.model('User', userSchema)
+export const Task = mongoose.model('Task', taskSchema)

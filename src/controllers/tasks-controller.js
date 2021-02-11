@@ -7,6 +7,7 @@
  */
 
 import mongoose from 'mongoose'
+import fetch from 'node-fetch'
 //import { User } from '../models/crud-snippet.js'
 
 /**
@@ -22,8 +23,23 @@ export class TasksController {
    */
   async index (req, res, next) {
     try {
-      const user = req.session.user
-      res.render('crud-snippets/index', { })
+      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues'
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
+        }
+      })
+      const responseJSON = await response.json()
+      const issues = []
+      responseJSON.forEach(element => {
+        const issue = {
+          description: element.description
+        }
+        issues.push(issue)
+      })
+      //const user = req.session.user
+      res.render('crud-snippets/index', { issues })
     } catch (error) {
       next(error)
     }
