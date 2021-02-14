@@ -70,6 +70,18 @@ export class TasksController {
    * @param {object} res - Express response object.
    */
   async create (req, res) {
+    // Socket.io: Send the created task to all subscribers.
+    res.io.emit('task', {
+      description: req.body.description,
+      done: req.body.done
+    })
+
+    // Webhook: Call is from hook. Skip redirect and flash.
+    if (req.headers['x-gitlab-event']) {
+      res.status(200).send('Hook accepted')
+      return
+    }
+
     /*try {
       
       // Hashes the entered password and creates a new User based on the form data.
