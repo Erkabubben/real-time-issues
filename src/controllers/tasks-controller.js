@@ -36,10 +36,11 @@ export class TasksController {
         const issue = {
           description: element.description
         }
+        if (element.closed_at !== null) issue.done = true;
+        else issue.done = false;
         issues.push(issue)
       })
-      //const user = req.session.user
-      res.render('crud-snippets/index', { issues })
+      res.render('real-time-issues/index', { issues })
     } catch (error) {
       next(error)
     }

@@ -16,7 +16,7 @@ const controller = new HookController()
 const tasksController = new TasksController()
 
 // Map HTTP verbs and route paths to controller actions.
-router.post('/task', controller.index, tasksController.create)
+router.post('/issue', controller.authorize, controller.index, tasksController.create)
 
 //router.get('/', controller.index)
 

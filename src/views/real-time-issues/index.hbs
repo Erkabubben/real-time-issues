@@ -16,6 +16,11 @@
         {{#if issues.length }}
         {{#each issues}}
         <tr>
+            {{#if this.done }}
+            <td>X</td>
+            {{else}}
+            <td>-</td>
+            {{/if}}
             <td>{{this.description}}</td>
         </tr>
         {{/each}}
@@ -28,5 +33,10 @@
 </table>
 
 <template id="task-template">
+    \{{#if this.done }}
+    <td>X</td>
+    \{{else}}
+    <td>-</td>
+    \{{/if}}
     <td>\{{this.description}}</td>
 </template>
