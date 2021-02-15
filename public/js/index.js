@@ -15,10 +15,11 @@ if (taskTemplate) {
     // Listen for message "new task" from the server
     socket.on('task', arg => {
         const taskString = hbsTemplate(arg)
-        const tr = document.createElement('tr')
+        const div = document.createElement('div')
+        div.classList.add('codesnippet')
         tr.innerHTML = taskString
 
         const taskList = document.querySelector('#task-list')
-        taskList.appendChild(tr)
+        taskList.appendChild(div)
     })
 }

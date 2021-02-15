@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0px;
   height: 100%;
   display: grid;
@@ -28,7 +28,7 @@ body {
 header {
   width: 100%;
   height: max-content;
-  background-color:	#24343cf3;
+  background-color:	#661616f3;
   display: grid;
   user-select: none;
   grid-template-columns: max-content auto max-content;
@@ -57,7 +57,7 @@ header ul#leftlist, header ul#rightlist {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #24343c;
+  background-color: #661616f3;
   vertical-align: middle;
 }
 
@@ -91,7 +91,7 @@ header ul li a {
 }
 
 header ul li a:hover {
-  background-color:	#115887;
+  background-color:	#871111;
 }
 
 #header-username {
@@ -129,7 +129,7 @@ h1, h2, h3 {
 footer {
   box-sizing: border-box;
   grid-area: footer;
-  background-color:	#115887f1;
+  background-color:	#871111f1;
   position: relative;
 }
 
@@ -188,7 +188,7 @@ div.codesnippet {
 
 .codesnippet-header {
   display: block;
-  background-color:	#115887f1;
+  background-color:	#871111f1;
   color: rgb(255, 255, 255);
   padding: 0.5rem;
 }

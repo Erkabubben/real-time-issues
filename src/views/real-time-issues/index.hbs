@@ -4,7 +4,7 @@
 <p>List of GitHub tasks.</p>
 <h2 class="center-header">Tasks:</h2>
 
-<table>
+<!--<table>
     <thead>
         <tr>
             <th>Done</th>
@@ -30,13 +30,47 @@
         </tr>
         {{/if}}
     </tbody>
-</table>
+</table>-->
+<div id="task-list">
+    {{#if issues.length }}
+    {{#each issues}}
+    <div class="codesnippet">
+        <div class="codesnippet-header"><h3>{{this.title}}</h3></div>
+        <div class="codesnippet-body"><p>{{this.description}}</p></div>
+        <div class="codesnippet-footer">
+            <ul>
+            <!--<li>
+                <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/edit" role="button">Edit</a>
+            </li>
+            <li>
+                <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/remove" role="button">Delete</a>
+            </li>-->
+            </ul>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No Issues yet.</p>
+    {{/if}}
+</div>
 
 <template id="task-template">
-    \{{#if this.done }}
+    <!--\{{#if this.done }}
     <td>X</td>
     \{{else}}
     <td>-</td>
     \{{/if}}
-    <td>\{{this.description}}</td>
+    <td>\{{this.description}}</td>-->
+    <div class="codesnippet-header"><h3>{{this.title}}</h3></div>
+    <div class="codesnippet-body"><p>{{this.description}}</p></div>
+    <div class="codesnippet-footer">
+        <ul>
+        <!--<li>
+            <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/edit" role="button">Edit</a>
+        </li>
+        <li>
+            <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/remove" role="button">Delete</a>
+        </li>-->
+        </ul>
+    </div>
 </template>
