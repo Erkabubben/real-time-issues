@@ -34,7 +34,9 @@ export class TasksController {
         const issue = {
           title: element.title,
           description: element.description,
-          userAvatar: element.author.avatar_url
+          userAvatar: element.author.avatar_url,
+          userUsername: element.author.username,
+          userFullname: element.author.name
         }
         if (element.closed_at !== null) issue.done = true;
         else issue.done = false;

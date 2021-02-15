@@ -187,20 +187,39 @@ div.codesnippet {
 }
 
 .codesnippet-header {
-  display: block;
+  display: grid;
   background-color:	#871111f1;
   color: rgb(255, 255, 255);
   padding: 0.5rem;
+  grid-template-columns: auto max-content;
+  grid-template-rows: min-content;
+  grid-template-areas:
+    "title user-info"
 }
 
 .codesnippet-header h3 {
   margin-bottom: 0;
+  grid-area: title;
 }
 
-.codesnippet-header img.avatar {
-  display: inline;
+.codesnippet-header div.user-info {
+  top: 0px;
+  right: 0px;
   padding: 0px;
   text-align: right;
+  grid-area: user-info;
+  height: 1em;
+}
+
+.codesnippet-header div.user-info img.avatar {
+  float: left;
+  padding: 0px;
+  height: 100%;
+}
+
+.codesnippet-header div.user-info h4 {
+  display: inline;
+  padding-left: 0.5rem;
 }
 
 .codesnippet-body {

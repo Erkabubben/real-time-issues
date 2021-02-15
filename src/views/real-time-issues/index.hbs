@@ -35,7 +35,10 @@
     {{#if issues.length }}
     {{#each issues}}
     <div class="codesnippet">
-        <div class="codesnippet-header"><h3>{{this.title}}<img src="{{this.userAvatar}}" class="avatar"></h3></div>
+        <div class="codesnippet-header">
+            <h3>{{this.title}}</h3>
+            <div class="user-info"><img src="{{this.userAvatar}}" class="avatar"><h4>{{this.userFullname}} ({{this.userUsername}})</h4></div>
+        </div>
         <div class="codesnippet-body"><p>{{this.description}}</p></div>
         <div class="codesnippet-footer">
             <ul>
