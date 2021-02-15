@@ -16,7 +16,7 @@ if (taskTemplate) {
     socket.on('task', arg => {
         const taskString = hbsTemplate(arg)
         const div = document.createElement('div')
-        div.classList.add('codesnippet')
+        div.classList.add('issue')
         tr.innerHTML = taskString
 
         const taskList = document.querySelector('#task-list')

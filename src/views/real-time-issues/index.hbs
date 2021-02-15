@@ -1,10 +1,8 @@
-<h1 class="center-header">
-    GITHUB ISSUES
-</h1>
-<p>List of GitHub tasks.</p>
+<h1 class="center-header">ISSUES</h1>
+<!--<p>List of GitHub tasks.</p>
 <h2 class="center-header">Tasks:</h2>
 
-<!--<table>
+<table>
     <thead>
         <tr>
             <th>Done</th>
@@ -34,13 +32,13 @@
 <div id="task-list">
     {{#if issues.length }}
     {{#each issues}}
-    <div class="codesnippet">
-        <div class="codesnippet-header">
+    <div class="issue">
+        <div class="issue-header">
             <h3>{{this.title}}</h3>
             <div class="user-info"><img src="{{this.userAvatar}}" class="avatar"><h4>{{this.userFullname}} ({{this.userUsername}})</h4></div>
         </div>
-        <div class="codesnippet-body"><p>{{this.description}}</p></div>
-        <div class="codesnippet-footer">
+        <div class="issue-body"><p>{{this.description}}</p></div>
+        <div class="issue-footer">
             <ul>
             <!--<li>
                 <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/edit" role="button">Edit</a>
@@ -64,9 +62,9 @@
     <td>-</td>
     \{{/if}}
     <td>\{{this.description}}</td>-->
-    <div class="codesnippet-header"><h3>{{this.title}}</h3></div>
-    <div class="codesnippet-body"><p>{{this.description}}</p></div>
-    <div class="codesnippet-footer">
+    <div class="issue-header"><h3>{{this.title}}</h3></div>
+    <div class="issue-body"><p>{{this.description}}</p></div>
+    <div class="issue-footer">
         <ul>
         <!--<li>
             <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/edit" role="button">Edit</a>
