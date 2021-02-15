@@ -33,7 +33,8 @@ export class TasksController {
       responseJSON.forEach(element => {
         const issue = {
           title: element.title,
-          description: element.description
+          description: element.description,
+          userAvatar: element.author.avatar_url
         }
         if (element.closed_at !== null) issue.done = true;
         else issue.done = false;

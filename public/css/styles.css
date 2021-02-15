@@ -197,6 +197,12 @@ div.codesnippet {
   margin-bottom: 0;
 }
 
+.codesnippet-header img.avatar {
+  display: inline;
+  padding: 0px;
+  text-align: right;
+}
+
 .codesnippet-body {
   display: block;
   background-color: #d4d4d4;
