@@ -56,14 +56,11 @@
 </div>
 
 <template id="task-template">
-    <!--\{{#if this.done }}
-    <td>X</td>
-    \{{else}}
-    <td>-</td>
-    \{{/if}}
-    <td>\{{this.description}}</td>-->
-    <div class="issue-header"><h3>{{this.title}}</h3></div>
-    <div class="issue-body"><p>{{this.description}}</p></div>
+    <div class="issue-header">
+        <h3>\{{this.title}}</h3>
+        <div class="user-info"><img src="\{{this.userAvatar}}" class="avatar"><h4>\{{this.userFullname}} (\{{this.userUsername}})</h4></div>
+    </div>
+    <div class="issue-body"><p>\{{this.description}}</p></div>
     <div class="issue-footer">
         <ul>
         <!--<li>

@@ -17,7 +17,7 @@ if (taskTemplate) {
         const taskString = hbsTemplate(arg)
         const div = document.createElement('div')
         div.classList.add('issue')
-        tr.innerHTML = taskString
+        div.innerHTML = taskString
 
         const taskList = document.querySelector('#task-list')
         taskList.appendChild(div)

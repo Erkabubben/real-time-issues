@@ -58,8 +58,12 @@ export class TasksController {
   async create (req, res) {
     // Socket.io: Send the created task to all subscribers.
     res.io.emit('task', {
+      title: req.body.title,
       description: req.body.description,
-      done: req.body.done
+      done: req.body.done,
+      userAvatar: req.body.userAvatar,
+      userUsername: req.body.userUsername,
+      userFullname: req.body.userFullname
     })
 
     // Webhook: Call is from hook. Skip redirect and flash.
