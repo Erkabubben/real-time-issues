@@ -40,10 +40,19 @@ export class HookController {
     req.body = {
       title: req.body.object_attributes.title,
       description: req.body.object_attributes.description,
-      done: false,
+      issueid: req.body.object_attributes.iid,
       userAvatar: req.body.user.avatar_url,
       userUsername: req.body.user.username,
-      userFullname: req.body.user.name
+      userFullname: req.body.user.name,
+      changes: req.body.changes,
+      action: req.body.object_attributes.action,
+      state: req.body.object_attributes.state
+    }
+
+    if (req.body.state === 'closed') {
+      req.body.done = true
+    } else {
+      req.body.done = false
     }
 
     next()

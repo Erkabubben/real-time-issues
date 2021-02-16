@@ -16,7 +16,7 @@ const controller = new HookController()
 const issuesController = new IssuesController()
 
 // Map HTTP verbs and route paths to controller actions.
-router.post('/issue', controller.authorize, controller.index, issuesController.create)
+router.post('/issue', controller.authorize, controller.index, issuesController.determineWebhookType)
 
 //router.get('/', controller.index)
 

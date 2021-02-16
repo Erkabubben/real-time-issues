@@ -56,11 +56,56 @@ export class IssuesController {
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
-  async create (req, res) {
+  async determineWebhookType (req, res) {
+    // CREATE
+    if (req.body.changes.created_at !== undefined) {
+      console.log(req.body.changes)
+      // Socket.io: Send the created issue to all subscribers.
+      res.io.emit('new-issue', {
+        title: req.body.title,
+        description: req.body.description,
+        issueid: req.body.issueid,
+        done: req.body.done,
+        userAvatar: req.body.userAvatar,
+        userUsername: req.body.userUsername,
+        userFullname: req.body.userFullname
+      })
+      console.log('NEW ISSUE')
+    // UPDATE
+    } else {
+      console.log(req.body.changes)
+      console.log('UPDATE ISSUE')
+      // Socket.io: Send the created issue to all subscribers.
+      res.io.emit('update-issue', {
+        title: req.body.title,
+        description: req.body.description,
+        issueid: req.body.issueid,
+        done: req.body.done,
+        userAvatar: req.body.userAvatar,
+        userUsername: req.body.userUsername,
+        userFullname: req.body.userFullname
+      })
+    }
+
+    // Webhook: Call is from hook. Skip redirect and flash.
+    if (req.headers['x-gitlab-event']) {
+      res.status(200).send('Hook accepted')
+      return
+    }
+  }
+
+  /**
+   * Creates a new Issue.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  create = (req, res) =>  {
     // Socket.io: Send the created issue to all subscribers.
-    res.io.emit('issue', {
+    res.io.emit('new-issue', {
       title: req.body.title,
       description: req.body.description,
+      issueid: req.body.issueid,
       done: req.body.done,
       userAvatar: req.body.userAvatar,
       userUsername: req.body.userUsername,
@@ -92,6 +137,27 @@ export class IssuesController {
       })
     } catch (error) {
       next(error)
+    }
+  }
+
+  /**
+   * Creates a new User based on the form content and adds to the Users collection
+   * in the database.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async isClosed (req, res) {
+    // Socket.io: Send the created issue to all subscribers.
+    res.io.emit('close-issue', {
+      issueid: req.body.issueid,
+      done: req.body.done,
+    })
+
+    // Webhook: Call is from hook. Skip redirect and flash.
+    if (req.headers['x-gitlab-event']) {
+      res.status(200).send('Hook accepted')
+      return
     }
   }
 

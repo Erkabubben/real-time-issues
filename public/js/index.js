@@ -13,13 +13,27 @@ if (issueTemplate) {
     const socket = window.io({path: `${baseURL}socket.io`})
 
     // Listen for message "new issue" from the server
-    socket.on('issue', arg => {
+    socket.on('new-issue', arg => {
         const issueString = hbsTemplate(arg)
         const div = document.createElement('div')
         div.classList.add('issue')
+        div.id = 'issueid_' + arg.issueid
         div.innerHTML = issueString
 
         const issueList = document.querySelector('#issue-list')
         issueList.appendChild(div)
+    })
+    
+    socket.on('update-issue', arg => {
+        const issueString = hbsTemplate(arg)
+        const newIssue = document.createElement('div')
+        newIssue.classList.add('issue')
+        newIssue.id = 'issueid_' + arg.issueid
+        newIssue.innerHTML = issueString
+        //console.log('update-issue')
+        //console.log(arg.issueid)
+        const issueList = document.querySelector('#issue-list')
+        const oldIssue = issueList.querySelector('div#issueid_' + arg.issueid)
+        issueList.replaceChild(newIssue, oldIssue)
     })
 }

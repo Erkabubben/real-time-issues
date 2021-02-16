@@ -191,10 +191,19 @@ div.issue {
   background-color:	#871111f1;
   color: rgb(255, 255, 255);
   padding: 0.5rem;
-  grid-template-columns: auto max-content;
+  grid-template-columns: max-content auto max-content;
   grid-template-rows: min-content;
   grid-template-areas:
-    "title user-info"
+    "open-close-button title user-info"
+}
+
+.issue-header form {
+  display: inline;
+  grid-area: open-close-button;
+}
+
+.issue-header button {
+  display: inline;
 }
 
 .issue-header h3 {
