@@ -14,7 +14,6 @@ import { router as hookRouter } from './hook-router.js'
 export const router = express.Router()
 
 router.use('/', issuesRouter)
-//router.use('/users', usersRouter) // Registers the Users collection router.
 
 // Webhook: Create a route for the hook
 router.use('/webhook', hookRouter)

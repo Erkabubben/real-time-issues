@@ -36,25 +36,23 @@
         <div class="issue-header">
             {{#if this.done}}
                 <form method="post" action="./{{this.issueid}}/reopen" target="hiddenFrame">
-                    <button type="submit">X</button>
+                    <button type="submit"><img src="../img/check.png"></button>
                 </form>
             {{else}}
                 <form method="post" action="./{{this.issueid}}/close" target="hiddenFrame">
-                    <button type="submit"> </button>
+                    <button type="submit"></button>
                 </form>
             {{/if}}
             <h3>{{this.title}}</h3>
-            <div class="user-info"><img src="{{this.userAvatar}}" class="avatar"><h4>{{this.userFullname}} ({{this.userUsername}})</h4></div>
+            <img src="{{this.userAvatar}}" class="avatar">
+            <h4 class="user-info">{{this.userFullname}} ({{this.userUsername}})</h4>
         </div>
         <div class="issue-body"><p>{{this.description}}</p></div>
         <div class="issue-footer">
             <ul>
-            <li>
-                <a type="button" class="button-link" href="./{{this.issueid}}/edit" role="button">Edit</a>
-            </li>
-            <!--<li>
-                <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/remove" role="button">Delete</a>
-            </li>-->
+                <li>
+                    <a type="button" class="button-link" href="./{{this.issueid}}/edit" role="button">Edit</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -69,7 +67,7 @@
     <div class="issue-header">
         \{{#if this.done}}
             <form method="post" action="./\{{this.issueid}}/reopen" target="hiddenFrame">
-                <button type="submit">X </button>
+                <button type="submit"><img src="../img/check.png"></button>
             </form>
         \{{else}}
             <form method="post" action="./\{{this.issueid}}/close" target="hiddenFrame">
@@ -77,17 +75,15 @@
             </form>
         \{{/if}}
         <h3>\{{this.title}}</h3>
-        <div class="user-info"><img src="\{{this.userAvatar}}" class="avatar"><h4>\{{this.userFullname}} (\{{this.userUsername}})</h4></div>
+        <img src="\{{this.userAvatar}}" class="avatar">
+        <h4 class="user-info">\{{this.userFullname}} (\{{this.userUsername}})</h4>
     </div>
     <div class="issue-body"><p>\{{this.description}}</p></div>
     <div class="issue-footer">
         <ul>
-        <!--<li>
-            <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/edit" role="button">Edit</a>
-        </li>
-        <li>
-            <a type="button" class="button-link" href="./users/{{../viewedProfileID}}/snippets/{{this._id}}/remove" role="button">Delete</a>
-        </li>-->
+            <li>
+                <a type="button" class="button-link" href="./\{{this.issueid}}/edit" role="button">Edit</a>
+            </li>
         </ul>
     </div>
 </template>

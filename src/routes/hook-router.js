@@ -17,11 +17,3 @@ const issuesController = new IssuesController()
 
 // Map HTTP verbs and route paths to controller actions.
 router.post('/issue', controller.authorize, controller.index, issuesController.determineWebhookType)
-
-//router.get('/', controller.index)
-
-//router.get('/new', controller.new)
-//router.post('/create', controller.create)
-//router.get('/:userid', controller.show)
-
-//router.use('/:userid/snippets', snippetsRouter) // Registers the Snippets collection router.

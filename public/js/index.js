@@ -14,24 +14,28 @@ if (issueTemplate) {
 
     // Listen for message "new issue" from the server
     socket.on('new-issue', arg => {
+        // Use the template to create a new Issue element
         const issueString = hbsTemplate(arg)
         const div = document.createElement('div')
         div.classList.add('issue')
         div.id = 'issueid_' + arg.issueid
         div.innerHTML = issueString
 
+        // Append the new element to the Issue list
         const issueList = document.querySelector('#issue-list')
         issueList.appendChild(div)
     })
     
+    // Listen for message "update issue" from the server
     socket.on('update-issue', arg => {
+        // Use the template to create a new Issue element
         const issueString = hbsTemplate(arg)
         const newIssue = document.createElement('div')
         newIssue.classList.add('issue')
         newIssue.id = 'issueid_' + arg.issueid
         newIssue.innerHTML = issueString
-        //console.log('update-issue')
-        //console.log(arg.issueid)
+
+        // Find the element with the same Issue ID in Issue list and replace it
         const issueList = document.querySelector('#issue-list')
         const oldIssue = issueList.querySelector('div#issueid_' + arg.issueid)
         issueList.replaceChild(newIssue, oldIssue)

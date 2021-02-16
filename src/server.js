@@ -14,7 +14,6 @@ import logger from 'morgan'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { router } from './routes/router.js'
-import { connectDB } from './config/mongoose.js'
 
 // Socket.io: To add Socket.io support
 import http from 'http'
@@ -24,9 +23,6 @@ import { Server } from 'socket.io'
  * The main function of the application.
  */
 const main = async () => {
-  // Checks that database is functional (no use starting the application otherwise).
-  //await connectDB()
-
   // Creates an Express application.
   const app = express()
 
@@ -43,8 +39,8 @@ const main = async () => {
     helmet.contentSecurityPolicy({
       directives: { // unsafe-eval added to allow Handlebars to work on client
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net', "'unsafe-eval'"],  // Allows scripts to be loaded from the listed sites
-        "img-src": ["'self'", 'secure.gravatar.com']  // Allows images to be loaded from the listed sites
+        'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net', "'unsafe-eval'"], // Allows scripts to be loaded from the listed sites
+        'img-src': ["'self'", 'secure.gravatar.com'] // Allows images to be loaded from the listed sites
       }
     })
   )

@@ -191,50 +191,65 @@ div.issue {
   background-color:	#871111f1;
   color: rgb(255, 255, 255);
   padding: 0.5rem;
-  grid-template-columns: max-content auto max-content;
-  grid-template-rows: min-content;
+  grid-template-columns: max-content auto min-content max-content;
+  grid-template-rows: max-content;
   grid-template-areas:
-    "open-close-button title user-info"
+    "open-close-button title avatar user-info"
 }
 
 .issue-header form {
-  display: inline;
   grid-area: open-close-button;
+  line-height: 0em;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 .issue-header button {
   margin: 0;
-  display: inline-block;
   background-color: white;
   border: solid 2px grey;
-  width: 1.5rem;
-  height: 1.5rem;
+  height: 2em;
+  width: 2em;
+  padding: 0;
+  border-radius: 6px;
+  background-image: url('../img/check.png');
+  overflow: hidden;
+}
+
+.issue-header button:hover {
+  background-color: rgb(224, 224, 224);
+}
+
+.issue-header button img {
+  margin: auto;
+  padding: 0;
+  height: 90%;
+  width: 90%;
+  vertical-align: middle;
+  overflow: hidden;
 }
 
 .issue-header h3 {
-  padding-left: 1rem;
-  margin-bottom: 0;
+  padding-left: 0;
+  margin: auto auto auto 0.5rem;
   grid-area: title;
+  vertical-align: middle;
 }
 
-.issue-header div.user-info {
-  top: 0px;
-  right: 0px;
+.issue-header img.avatar {
+  grid-area: avatar;
   padding: 0px;
-  text-align: right;
+  width: 1.5em;
+  border: solid black 2px;
+  border-radius: 6px;
+}
+
+.issue-header h4.user-info {
+  margin: auto 0 auto 0.5rem;
+  padding: 0;
+  vertical-align: middle;
   grid-area: user-info;
-  height: 1em;
-}
-
-.issue-header div.user-info img.avatar {
-  float: left;
-  padding: 0px;
-  height: 100%;
-}
-
-.issue-header div.user-info h4 {
-  display: inline;
-  padding-left: 0.5rem;
 }
 
 .issue-body {

@@ -1,5 +1,5 @@
 /**
- * Routes for the Users collection (RESTful).
+ * Routes for the Real Time Issues application.
  *
  * @author Erik Lindholm <elimk06@student.lnu.se>
  * @author Mats Loock
@@ -19,9 +19,3 @@ router.get('/:issueid/edit', controller.edit)
 router.post('/:issueid/close', controller.close)
 router.post('/:issueid/reopen', controller.reopen)
 router.post('/:issueid/update', controller.update)
-
-//router.get('/new', controller.new)
-//router.post('/create', controller.create)
-//router.get('/:userid', controller.show)
-
-//router.use('/:userid/snippets', snippetsRouter) // Registers the Snippets collection router.
