@@ -95,6 +95,42 @@ export class IssuesController {
   }
 
   /**
+   * Displays a form for editing an existing code snippet.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  async edit (req, res, next) {
+    console.log('EDIT')
+    try {
+      // Handlebars variables setup.
+      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues/' + req.params.issueid
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
+        }
+      })
+      const responseJSON = await response.json()
+      const issue = {
+        title: responseJSON.title,
+        description: responseJSON.description,
+        issueid: responseJSON.iid,
+        userAvatar: responseJSON.author.avatar_url,
+        userUsername: responseJSON.author.username,
+        userFullname: responseJSON.author.name
+      }
+      if (responseJSON.closed_at !== null) issue.done = true;
+      else issue.done = false;
+      // Render form.
+      res.render('real-time-issues/issues-edit', { issue })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
    * Creates a new Issue.
    *
    * @param {object} req - Express request object.
