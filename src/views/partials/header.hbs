@@ -4,25 +4,5 @@
       <li class="nav-item">
         <a class="nav-link" href="./">Home</a>
       </li>
-      {{#if user}}
-      {{else}}
-      <li class="nav-item">
-        <a class="nav-link" href="./users/new">Register</a>
-      </li>
-      {{/if}}
-    </ul>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="rightlist">
-      {{#if user}}
-      <li class="nav-item">
-        <h3 id="header-username"><a href="./users/{{user._id}}"><b>{{user.username}}</b></a></h3>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./logout">Log Out</a>
-      </li>
-      {{else}}
-      <li class="nav-item">
-        <a class="nav-link" href="./login">Login</a>
-      </li>
-      {{/if}}
     </ul>
 </header>

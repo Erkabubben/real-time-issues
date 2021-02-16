@@ -18,6 +18,7 @@ router.get('/', controller.index)
 router.get('/:issueid/edit', controller.edit)
 router.post('/:issueid/close', controller.close)
 router.post('/:issueid/reopen', controller.reopen)
+router.post('/:issueid/update', controller.update)
 
 //router.get('/new', controller.new)
 //router.post('/create', controller.create)

@@ -284,7 +284,7 @@ div.issue {
 a.button-link, button.button-link {
   color: white;
   text-align: center;
-  background-color:	#24343c;
+  background-color:	#661616f3;
   text-decoration: none;
   margin: 0 0.5rem 0 0;
   padding: 0.5rem;
@@ -294,7 +294,7 @@ a.button-link, button.button-link {
 }
 
 a.button-link:hover, button.button-link:hover {
-  background-color:	#115887;
+  background-color:	#b61a1af3;
 }
 
 form#login {
