@@ -1,7 +1,7 @@
 {
-  "name": "assignment-b1-crud-snippets",
+  "name": "assignment-b2-realtime-web-application",
   "version": "1.0.0",
-  "description": "1DV026 - Examination Assignment Module B - CRUD Snippets",
+  "description": "1DV026 - Examination Assignment Module B - Real Time Web Application",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   },
-  "repository": "git@gitlab.lnu.se:1dv026/student/elimk06/assignment-b1-crud-snippets.git",
+  "repository": "git@gitlab.lnu.se:1dv026/student/elimk06/assignment-b2-realtime-web-application.git",
   "contributors": [
     "Mats Loock <mats.loock@lnu.se>",
     "Erik Lindholm <elimk06@student.lnu.se>"
@@ -18,14 +18,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "express-hbs": "^2.3.4",
     "express-session": "^1.17.1",
     "helmet": "^4.3.1",
     "http-errors": "^1.8.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.10",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
     "socket.io": "^3.1.1"

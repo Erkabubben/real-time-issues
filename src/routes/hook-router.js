@@ -1,5 +1,5 @@
 /**
- * Routes for the Users collection (RESTful).
+ * Webhook routes.
  *
  * @author Erik Lindholm <elimk06@student.lnu.se>
  * @author Mats Loock

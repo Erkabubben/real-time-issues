@@ -1,5 +1,6 @@
 /**
- * Module for the UsersController (RESTful methods for the Users collection).
+ * Module for the HookController, which is responsible for handling
+ * incoming Webhooks.
  *
  * @author Erik Lindholm <elimk06@student.lnu.se>
  * @author Mats Loock
@@ -11,7 +12,7 @@
  */
 export class HookController {
   /**
-   * Authorizes the Webhook.
+   * Authorizes the Webhook based on the Hook Secret.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.

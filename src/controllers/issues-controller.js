@@ -22,7 +22,7 @@ export class IssuesController {
   async index (req, res, next) {
     try {
       // Retrieve Issues list from GitLab by API call
-      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues'
+      const url = process.env.GITLAB_API_PROJECT_ISSUES_URL
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -101,7 +101,7 @@ export class IssuesController {
   async edit (req, res, next) {
     try {
       // Handlebars variables setup - retrieves Issue data from GitLab.
-      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues/' + req.params.issueid
+      const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -137,7 +137,7 @@ export class IssuesController {
    */
   async update (req, res, next) {
     try {
-      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?title=' + req.body.title + '&description=' + req.body.description
+      const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid + '?title=' + req.body.title + '&description=' + req.body.description
       await fetch(url, {
         method: 'PUT',
         headers: {
@@ -161,7 +161,7 @@ export class IssuesController {
    */
   async close (req, res, next) {
     try {
-      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?state_event=close'
+      const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid + '?state_event=close'
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -185,7 +185,7 @@ export class IssuesController {
    */
   async reopen (req, res, next) {
     try {
-      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?state_event=reopen'
+      const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid + '?state_event=reopen'
       fetch(url, {
         method: 'PUT',
         headers: {
