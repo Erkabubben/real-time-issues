@@ -10,7 +10,7 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
 // Create a User schema.
-const taskSchema = new mongoose.Schema({
+const issueSchema = new mongoose.Schema({
   description: {
     type: String,
     required: '`{PATH}` is required!',
@@ -34,7 +34,7 @@ const taskSchema = new mongoose.Schema({
  * @param {string} password - The unhashed password.
  * @returns {string} - The bcrypt-hashed and salted password.
  */
-taskSchema.statics.hashPassword = async function (password) {
+issueSchema.statics.hashPassword = async function (password) {
   const hashedPassword = await bcrypt.hash(password, 8)
   // Throw error if entered password is not within max and min length
   if (password.length > 200) {
@@ -52,7 +52,7 @@ taskSchema.statics.hashPassword = async function (password) {
  * @param {string} password - The entered password.
  * @returns {object} - The authenticated user's Mongoose model.
  */
-taskSchema.statics.authenticate = async function (username, password) {
+issueSchema.statics.authenticate = async function (username, password) {
   const user = await this.findOne({ username })
 
   // If no user is found or password is wrong, throw an error.
@@ -65,4 +65,4 @@ taskSchema.statics.authenticate = async function (username, password) {
 }
 
 // Create a model using the schema.
-export const Task = mongoose.model('Task', taskSchema)
+export const Issue = mongoose.model('Issue', issueSchema)

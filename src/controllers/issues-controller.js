@@ -11,7 +11,7 @@ import fetch from 'node-fetch'
 /**
  * Encapsulates a controller.
  */
-export class TasksController {
+export class IssuesController {
   /**
    * Displays the index page.
    *
@@ -34,6 +34,7 @@ export class TasksController {
         const issue = {
           title: element.title,
           description: element.description,
+          issueid: element.iid,
           userAvatar: element.author.avatar_url,
           userUsername: element.author.username,
           userFullname: element.author.name
@@ -56,8 +57,8 @@ export class TasksController {
    * @param {object} res - Express response object.
    */
   async create (req, res) {
-    // Socket.io: Send the created task to all subscribers.
-    res.io.emit('task', {
+    // Socket.io: Send the created issue to all subscribers.
+    res.io.emit('issue', {
       title: req.body.title,
       description: req.body.description,
       done: req.body.done,
@@ -70,6 +71,27 @@ export class TasksController {
     if (req.headers['x-gitlab-event']) {
       res.status(200).send('Hook accepted')
       return
+    }
+  }
+
+  /**
+   * Creates a new User based on the form content and adds to the Users collection
+   * in the database.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async close (req, res) {
+    try {
+      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?state_event=close'
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
+        }
+      })
+    } catch (error) {
+      next(error)
     }
   }
 }
