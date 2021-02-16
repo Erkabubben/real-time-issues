@@ -203,10 +203,16 @@ div.issue {
 }
 
 .issue-header button {
-  display: inline;
+  margin: 0;
+  display: inline-block;
+  background-color: white;
+  border: solid 2px grey;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .issue-header h3 {
+  padding-left: 1rem;
   margin-bottom: 0;
   grid-area: title;
 }

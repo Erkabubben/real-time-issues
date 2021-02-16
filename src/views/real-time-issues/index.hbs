@@ -35,12 +35,12 @@
     <div class="issue" id="issueid_{{this.issueid}}">
         <div class="issue-header">
             {{#if this.done}}
-                <form method="post" action="./{{this.issueid}}/reopen" >
-                    <button type="submit">[x]</button>
+                <form method="post" action="./{{this.issueid}}/reopen" target="hiddenFrame">
+                    <button type="submit">X</button>
                 </form>
             {{else}}
-                <form method="post" action="./{{this.issueid}}/close" >
-                    <button type="submit">[ ]</button>
+                <form method="post" action="./{{this.issueid}}/close" target="hiddenFrame">
+                    <button type="submit"> </button>
                 </form>
             {{/if}}
             <h3>{{this.title}}</h3>
@@ -62,17 +62,18 @@
     {{else}}
     <p>No Issues yet.</p>
     {{/if}}
+    <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 </div>
 
 <template id="issue-template">
     <div class="issue-header">
         \{{#if this.done}}
-            <form method="post" action="./\{{this.issueid}}/reopen" >
-                <button type="submit">[x]</button>
+            <form method="post" action="./\{{this.issueid}}/reopen" target="hiddenFrame">
+                <button type="submit">X </button>
             </form>
         \{{else}}
-            <form method="post" action="./\{{this.issueid}}/close" >
-                <button type="submit">[ ]</button>
+            <form method="post" action="./\{{this.issueid}}/close" target="hiddenFrame">
+                <button type="submit"> </button>
             </form>
         \{{/if}}
         <h3>\{{this.title}}</h3>

@@ -73,7 +73,7 @@ export class IssuesController {
       console.log('NEW ISSUE')
     // UPDATE
     } else {
-      console.log(req.body.changes)
+      console.log(req.body)
       console.log('UPDATE ISSUE')
       // Socket.io: Send the created issue to all subscribers.
       res.io.emit('update-issue', {
@@ -129,7 +129,7 @@ export class IssuesController {
   async close (req, res) {
     try {
       const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?state_event=close'
-      const response = await fetch(url, {
+      fetch(url, {
         method: 'PUT',
         headers: {
           'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
@@ -138,6 +138,10 @@ export class IssuesController {
     } catch (error) {
       next(error)
     }
+
+    // Skip redirect and flash.
+    res.status(200).send()
+    return
   }
 
   /**
@@ -171,7 +175,7 @@ export class IssuesController {
   async reopen (req, res) {
     try {
       const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?state_event=reopen'
-      const response = await fetch(url, {
+      fetch(url, {
         method: 'PUT',
         headers: {
           'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
@@ -180,5 +184,9 @@ export class IssuesController {
     } catch (error) {
       next(error)
     }
+
+    // Skip redirect and flash.
+    res.status(200).send()
+    return
   }
 }
