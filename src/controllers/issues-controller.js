@@ -94,4 +94,25 @@ export class IssuesController {
       next(error)
     }
   }
+
+  /**
+   * Creates a new User based on the form content and adds to the Users collection
+   * in the database.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async reopen (req, res) {
+    try {
+      const url = 'https://gitlab.lnu.se/api/v4/projects/12746/issues' + '/' + req.params.issueid + '?state_event=reopen'
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
+        }
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
 }
