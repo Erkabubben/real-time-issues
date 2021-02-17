@@ -108,6 +108,12 @@ export class IssuesController {
           Authorization: 'Bearer ' + process.env.ACCESS_TOKEN
         }
       })
+      // If Issue doesn't exist, throw error.
+      if (response.status !== 200) {
+        const error = new Error('404 Not Found')
+        error.statusCode = 404
+        throw error
+      }
       const responseJSON = await response.json()
       // Parse response data to an Issue object
       const issue = {
@@ -138,12 +144,18 @@ export class IssuesController {
   async update (req, res, next) {
     try {
       const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid + '?title=' + req.body.title + '&description=' + req.body.description
-      await fetch(url, {
+      const response = await fetch(url, {
         method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + process.env.ACCESS_TOKEN
         }
       })
+      // If Issue doesn't exist, throw error.
+      if (response.status !== 200) {
+        const error = new Error('404 Not Found')
+        error.statusCode = 404
+        throw error
+      }
       // Redirect and show a flash message.
       req.session.flash = { type: 'success', text: 'Issue #' + req.params.issueid + ' was updated.' }
       res.redirect('../')
@@ -162,12 +174,18 @@ export class IssuesController {
   async close (req, res, next) {
     try {
       const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid + '?state_event=close'
-      fetch(url, {
+      const response = fetch(url, {
         method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + process.env.ACCESS_TOKEN
         }
       })
+      // If Issue doesn't exist, throw error.
+      if (response.status !== 200) {
+        const error = new Error('404 Not Found')
+        error.statusCode = 404
+        throw error
+      }
     } catch (error) {
       next(error)
     }
@@ -186,12 +204,18 @@ export class IssuesController {
   async reopen (req, res, next) {
     try {
       const url = process.env.GITLAB_API_PROJECT_ISSUES_URL + '/' + req.params.issueid + '?state_event=reopen'
-      fetch(url, {
+      const response = fetch(url, {
         method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + process.env.ACCESS_TOKEN
         }
       })
+      // If Issue doesn't exist, throw error.
+      if (response.status !== 200) {
+        const error = new Error('404 Not Found')
+        error.statusCode = 404
+        throw error
+      }
     } catch (error) {
       next(error)
     }
