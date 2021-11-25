@@ -1,3 +1,4 @@
+![screenshot-real-time-issues](https://user-images.githubusercontent.com/57233721/143483851-06bf7ab2-99cd-4d6d-826b-d5b471a62add.jpg)
 # Assignment B2 - Realtime Web Application
 
 In this assignment, you will be writing a web application that includes realtime web technologies such as WebSocket and webhook. You must put the application into production on a public server. 
